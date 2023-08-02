@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'LoginPageUi.dart';
+import 'LoginPage.dart';
 
 class SignUpClass extends StatefulWidget {
   const SignUpClass({Key? key}) : super(key: key);
@@ -96,7 +96,7 @@ class _SignUpClassState extends State<SignUpClass> {
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginClass()));
                   },
                     child: Text("Login",style:
-                     TextStyle(color: Colors.blue),),),
+                     TextStyle(color: Colors.blue),),)
                 ],
               )
             ],

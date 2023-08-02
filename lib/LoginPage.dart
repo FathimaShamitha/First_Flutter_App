@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'SignUpPageUi.dart';
+import 'SignUpPage.dart';
 
 class LoginClass extends StatefulWidget {
   const LoginClass({Key? key}) : super(key: key);
