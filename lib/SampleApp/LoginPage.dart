@@ -10,7 +10,6 @@ class LoginClass extends StatefulWidget {
 }
 
 class _LoginClassState extends State<LoginClass> {
-
   bool isChecked = false;
 
   @override
@@ -97,7 +96,7 @@ class _LoginClassState extends State<LoginClass> {
                     },
                     child: Text(
                       "Remember Me",
-                      style: TextStyle(color: Colors.blue, fontSize: 11),
+                      style: TextStyle(color: Colors.blue),
                     )),
               ),
               SizedBox(
@@ -116,7 +115,7 @@ class _LoginClassState extends State<LoginClass> {
                   )),
               Text(
                 "Forgot Password?",
-                style: TextStyle(color: Colors.blue, fontSize: 11),
+                style: TextStyle(color: Colors.blue),
               )
             ],
           ),

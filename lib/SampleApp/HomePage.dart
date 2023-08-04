@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapplication/SignUpPage.dart';
+import 'package:myapplication/SampleApp/SignUpPage.dart';
 
 import 'LoginPage.dart';
+
 class HomePageClass extends StatefulWidget {
   const HomePageClass({Key? key}) : super(key: key);
 
@@ -10,27 +11,28 @@ class HomePageClass extends StatefulWidget {
 }
 
 class _HomePageClassState extends State<HomePageClass> {
+  int cindex = 0;
+  late PageController pcntrl;
 
-   int cindex = 0;
-   late PageController pcntrl;
-
-   @override
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     pcntrl = PageController(initialPage: cindex);
   }
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: cindex,
         items: [
-        BottomNavigationBarItem(icon: Icon(Icons.app_registration_outlined),label: "SignUp"),
-        BottomNavigationBarItem(icon: Icon(Icons.login_outlined),label: "Login")
-      ],
-        onTap: (index){
+          BottomNavigationBarItem(
+              icon: Icon(Icons.app_registration_outlined), label: "SignUp"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.login_outlined), label: "Login")
+        ],
+        onTap: (index) {
           setState(() {
             cindex = index;
             pcntrl.jumpToPage(index);
@@ -39,10 +41,7 @@ class _HomePageClassState extends State<HomePageClass> {
       ),
       body: PageView(
         controller: pcntrl,
-        children: [
-          SignUpClass(),
-          LoginClass()
-        ],
+        children: [SignUpClass(), LoginClass()],
       ),
     );
   }
