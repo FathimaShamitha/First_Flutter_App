@@ -192,7 +192,7 @@ class NewCardClass extends StatelessWidget {
       elevation: 6,
       child: Container(
         height: 180,
-        width: 100,
+        width: 90,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [

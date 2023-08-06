@@ -16,7 +16,7 @@ class _MyNewAppClassState extends State<MyNewAppClass> {
           Positioned(
             left: -100,
               bottom: 390,
-              child: Image(image: NetworkImage("https://blogimage.vantagefit.io/vfitimages/2021/11/neha-.png"))),
+              child: Image(image: AssetImage("assets/images/meditate.png"))),
           SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(10,0,10,0),
@@ -108,7 +108,7 @@ class _MyNewAppClassState extends State<MyNewAppClass> {
                       children: [
                         SizedBox(
                           width: 80,
-                            child: Image(image: NetworkImage("https://blogimage.vantagefit.io/vfitimages/2021/11/neha-.png"))),
+                            child: Image(image: AssetImage("assets/images/meditate.png"))),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +117,10 @@ class _MyNewAppClassState extends State<MyNewAppClass> {
                             Text("Start your deepen your practice",style: TextStyle(fontSize: 15),),
                           ],
                         ),
-                        Icon(Icons.lock_outlined,color: Colors.black,)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 30),
+                          child: Icon(Icons.lock_outlined,color: Colors.black,),
+                        )
                       ],
                     ),
                   )
