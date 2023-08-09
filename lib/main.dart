@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'SampleApp/HomePage.dart';
 import 'Tasks/homepage.dart';
+import 'Tasks/imagepickertask.dart';
+import 'Tasks/profilepageuitask.dart';
 import 'Tasks/uidesigntask.dart';
 
 void main() {
@@ -16,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        builder: FToastBuilder(),
         title: 'Flutter Demo',
         theme: ThemeData(
           // This is the theme of your application.
@@ -36,7 +40,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: MyHomePageClass());
+        home: MyImageSelectClass()
+    );
   }
 }
 

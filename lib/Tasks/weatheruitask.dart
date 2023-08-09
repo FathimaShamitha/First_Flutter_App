@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class WeatherClass extends StatefulWidget {
   const WeatherClass({Key? key}) : super(key: key);
@@ -67,7 +68,7 @@ class _WeatherClassState extends State<WeatherClass> {
                 children: [
                   Icon(
                     Icons.cloud_outlined,
-                    color: Colors.blue,
+                    color: Colors.blue[400],
                     size: 50,
                   ),
                   SizedBox(
@@ -94,54 +95,60 @@ class _WeatherClassState extends State<WeatherClass> {
               ),
               Card(
                 elevation: 6,
-                child: Container(
-                  height: 90,
-                  width: 370,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(
-                        Icons.water_drop,
-                        color: Colors.blue,
-                        size: 40,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Precipitation",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Text(
-                            "4%",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Container(
-                          height: 60,
-                          child: VerticalDivider(
-                            thickness: 3,
-                          )),
-                      Icon(
-                        Icons.light_mode_outlined,
-                        color: Colors.blue,
-                        size: 40,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "UV Index",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Text("Medium",
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      )
-                    ],
+                child: InkWell(
+                  onTap: (){
+                    Fluttertoast.showToast(msg: "Page changed",
+                        backgroundColor: Colors.red);
+                  },
+                  child: Container(
+                    height: 90,
+                    width: 370,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(
+                          Icons.water_drop,
+                          color: Colors.blue[400],
+                          size: 40,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Precipitation",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text(
+                              "4%",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Container(
+                            height: 60,
+                            child: VerticalDivider(
+                              thickness: 3,
+                            )),
+                        Icon(
+                          Icons.light_mode_outlined,
+                          color: Colors.blue[400],
+                          size: 40,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "UV Index",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            Text("Medium",
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -202,7 +209,7 @@ class NewCardClass extends StatelessWidget {
             ),
             Icon(
               myicon,
-              color: Colors.blue,
+              color: Colors.blue[400],
               size: 40,
             ),
             Text(
