@@ -1,0 +1,102 @@
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+class MyGridClass extends StatefulWidget {
+  const MyGridClass({Key? key}) : super(key: key);
+
+  @override
+  State<MyGridClass> createState() => _MyGridClassState();
+}
+
+class _MyGridClassState extends State<MyGridClass> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+          child: GridView.count(
+        crossAxisCount: 4,
+        primary: true,
+        crossAxisSpacing: 3,
+        mainAxisSpacing: 3,
+        children: [
+          InkWell(
+              onTap: () {
+                Fluttertoast.showToast(msg: "Red");
+              },
+              child: Container(
+                  height: 90,
+                  width: 90,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10)))),
+          InkWell(
+              onTap: () {
+                Fluttertoast.showToast(msg: "Green");
+              },
+              child: Container(
+                  height: 90,
+                  width: 90,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10)))),
+          InkWell(
+              onTap: () {
+                Fluttertoast.showToast(msg: "Blue");
+              },
+              child: Container(
+                  height: 90,
+                  width: 90,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(10)))),
+          InkWell(
+              onTap: () {
+                Fluttertoast.showToast(msg: "Orange");
+              },
+              child: Container(
+                  height: 90,
+                  width: 90,
+                  decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(10)))),
+          InkWell(
+            onTap: (){Fluttertoast.showToast(msg: "RedAccent");},
+            child: Container(
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                    color: Colors.redAccent,
+                    borderRadius: BorderRadius.circular(10))),
+          ),
+          InkWell(
+            onTap: (){Fluttertoast.showToast(msg: "LightGreen");},
+            child: Container(
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                    color: Colors.lightGreen,
+                    borderRadius: BorderRadius.circular(10))),
+          ),
+          InkWell(
+            onTap: (){Fluttertoast.showToast(msg: "LightBlue");},
+            child: Container(
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: BorderRadius.circular(10))),
+          ),
+          InkWell(
+            onTap: (){Fluttertoast.showToast(msg: "OrangeAccent");},
+            child: Container(
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                    color: Colors.orangeAccent,
+                    borderRadius: BorderRadius.circular(10))),
+          ),
+        ],
+      )),
+    );
+  }
+}

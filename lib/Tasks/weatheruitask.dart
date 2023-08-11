@@ -185,6 +185,7 @@ class _WeatherClassState extends State<WeatherClass> {
 }
 
 class NewCardClass extends StatelessWidget {
+
   final String time;
   final IconData myicon;
   final String temp;
