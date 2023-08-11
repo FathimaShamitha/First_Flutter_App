@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MyProfileClass extends StatefulWidget {
   const MyProfileClass({Key? key}) : super(key: key);
@@ -8,6 +11,24 @@ class MyProfileClass extends StatefulWidget {
 }
 
 class _MyProfileClassState extends State<MyProfileClass> {
+  File? pimage, cimage;
+
+  Future<void> changeProfilePic() async {
+    var img = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      pimage = File(img!.path);
+    });
+  }
+
+  Future<void> changeCoverPic() async {
+    var img2 = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      cimage = File(img2!.path);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,13 +37,86 @@ class _MyProfileClassState extends State<MyProfileClass> {
           child: Column(
             children: [
               SizedBox(
-                height: 40,
+                height: 10,
               ),
-              Center(
-                child: CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage("assets/images/profile_pic.jpg"),
-                ),
+              Container(
+                height: 250,
+                width: MediaQuery.of(context).size.width,
+                child: Stack(children: [
+                  pimage == null
+                      ? Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Container(
+                            height: 170,
+                            width: 400,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[300]),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Container(
+                            height: 170,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: SizedBox(
+                              width: 400,
+                              child: Image(
+                                image: FileImage(cimage!),
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                          ),
+                        ),
+                  pimage == null
+                      ? Positioned(
+                          left: 80,
+                          bottom: 10,
+                          child: CircleAvatar(
+                            radius: 100,
+                            backgroundColor: Colors.grey[100],
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                              size: 150,
+                            ),
+                          ))
+                      : Positioned(
+                          left: 80,
+                          bottom: 10,
+                          child: CircleAvatar(
+                              radius: 100, backgroundImage: FileImage(pimage!)),
+                        ),
+                  Positioned(
+                    left: 240,
+                    bottom: 35,
+                    child: InkWell(
+                      onTap: changeProfilePic,
+                      child: CircleAvatar(
+                        radius: 10,
+                        backgroundColor: Colors.blue,
+                        child: Icon(
+                          Icons.camera_alt,
+                          size: 10,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                      left: 330,
+                      bottom: 80,
+                      child: InkWell(
+                          onTap: changeCoverPic,
+                          child: Icon(
+                            Icons.add,
+                            size: 20,
+                            color: Colors.white,
+                          )))
+                ]),
               ),
               SizedBox(
                 height: 20,
@@ -129,9 +223,9 @@ class _MyProfileClassState extends State<MyProfileClass> {
                         borderRadius: BorderRadius.circular(6)),
                     child: Center(
                         child: Text(
-                          "Message",
-                          style: TextStyle(color: Colors.blue, fontSize: 18),
-                        )),
+                      "Message",
+                      style: TextStyle(color: Colors.blue, fontSize: 18),
+                    )),
                   ),
                   Container(
                     height: 50,
@@ -141,9 +235,9 @@ class _MyProfileClassState extends State<MyProfileClass> {
                         borderRadius: BorderRadius.circular(4)),
                     child: Center(
                         child: Text(
-                          "Follow",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )),
+                      "Follow",
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    )),
                   ),
                 ],
               ),
