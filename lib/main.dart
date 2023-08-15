@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'SampleApp/HomePage.dart';
+import 'Tasks/gallerytask.dart';
+import 'Tasks/gridViewBuildertask.dart';
 import 'Tasks/gridViewtask.dart';
 import 'Tasks/homepage.dart';
 import 'Tasks/imagepickertask.dart';
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: MyGridClass()
+        home: MyGallerycalss()
     );
   }
 }

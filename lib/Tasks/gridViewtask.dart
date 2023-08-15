@@ -9,6 +9,11 @@ class MyGridClass extends StatefulWidget {
 }
 
 class _MyGridClassState extends State<MyGridClass> {
+
+  void showMessage(Color c,String m){
+    Fluttertoast.showToast(msg: m,backgroundColor: c,toastLength: Toast.LENGTH_SHORT);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +25,7 @@ class _MyGridClassState extends State<MyGridClass> {
         mainAxisSpacing: 3,
         children: [
           InkWell(
-              onTap: () {
-                Fluttertoast.showToast(msg: "Red");
-              },
+              onTap: (){showMessage(Colors.redAccent,"Red");},
               child: Container(
                   height: 90,
                   width: 90,
@@ -31,7 +34,7 @@ class _MyGridClassState extends State<MyGridClass> {
                       borderRadius: BorderRadius.circular(10)))),
           InkWell(
               onTap: () {
-                Fluttertoast.showToast(msg: "Green");
+                showMessage(Colors.green, "Green");
               },
               child: Container(
                   height: 90,
@@ -41,7 +44,7 @@ class _MyGridClassState extends State<MyGridClass> {
                       borderRadius: BorderRadius.circular(10)))),
           InkWell(
               onTap: () {
-                Fluttertoast.showToast(msg: "Blue");
+                showMessage(Colors.blue, "Blue");
               },
               child: Container(
                   height: 90,
@@ -51,7 +54,7 @@ class _MyGridClassState extends State<MyGridClass> {
                       borderRadius: BorderRadius.circular(10)))),
           InkWell(
               onTap: () {
-                Fluttertoast.showToast(msg: "Orange");
+                showMessage(Colors.orange, "Orange");
               },
               child: Container(
                   height: 90,
@@ -60,7 +63,9 @@ class _MyGridClassState extends State<MyGridClass> {
                       color: Colors.orange,
                       borderRadius: BorderRadius.circular(10)))),
           InkWell(
-            onTap: (){Fluttertoast.showToast(msg: "RedAccent");},
+            onTap: (){
+              showMessage(Colors.redAccent, "RedAccent");
+              },
             child: Container(
                 height: 90,
                 width: 90,
@@ -69,7 +74,9 @@ class _MyGridClassState extends State<MyGridClass> {
                     borderRadius: BorderRadius.circular(10))),
           ),
           InkWell(
-            onTap: (){Fluttertoast.showToast(msg: "LightGreen");},
+            onTap: (){
+              showMessage(Colors.lightGreen, "LightGreen");
+              },
             child: Container(
                 height: 90,
                 width: 90,
@@ -78,7 +85,9 @@ class _MyGridClassState extends State<MyGridClass> {
                     borderRadius: BorderRadius.circular(10))),
           ),
           InkWell(
-            onTap: (){Fluttertoast.showToast(msg: "LightBlue");},
+            onTap: (){
+              showMessage(Colors.lightBlue, "LightBlue");
+              },
             child: Container(
                 height: 90,
                 width: 90,
@@ -87,7 +96,9 @@ class _MyGridClassState extends State<MyGridClass> {
                     borderRadius: BorderRadius.circular(10))),
           ),
           InkWell(
-            onTap: (){Fluttertoast.showToast(msg: "OrangeAccent");},
+            onTap: (){
+              showMessage(Colors.orangeAccent, "OrangeAccent");
+              },
             child: Container(
                 height: 90,
                 width: 90,
