@@ -36,7 +36,7 @@ class _MyGallerycalssState extends State<MyGallerycalss> {
             ),
             primary: true,
             itemBuilder: (context, int index) {
-              if (index == gallery.length) {
+              if (index == 0) {
                 return InkWell(
                   onTap: showGallery,
                   child: Container(
@@ -56,7 +56,7 @@ class _MyGallerycalssState extends State<MyGallerycalss> {
                   height: 50,
                   width: 50,
                   child: Image(
-                    image: FileImage(gallery[index]!),
+                    image: FileImage(gallery[index-1]!),
                     fit: BoxFit.cover,
                   ),
                 );

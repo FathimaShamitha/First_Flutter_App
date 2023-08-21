@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'SampleApp/HomePage.dart';
-import 'Tasks/gallerytask.dart';
-import 'Tasks/gridViewBuildertask.dart';
-import 'Tasks/gridViewtask.dart';
-import 'Tasks/homepage.dart';
-import 'Tasks/imagepickertask.dart';
-import 'Tasks/profilePage.dart';
-import 'Tasks/uidesigntask.dart';
-import 'WhatsAppUiDemo/chatHomePageUi.dart';
+import 'InstagramUiDemo/instaMainPage.dart';
+import 'Tasks/sptask3.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +38,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: MyGallerycalss());
+        home: MyspClass());
   }
 }
 
