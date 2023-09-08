@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapplication/SampleApp/SignUpPage.dart';
 
-import 'LoginPage.dart';
+import 'loginPage.dart';
 
 class HomePageClass extends StatefulWidget {
   const HomePageClass({Key? key}) : super(key: key);

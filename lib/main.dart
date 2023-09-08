@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'MyApp/registerpagetask.dart';
+import 'WebviewTask/webmainpage.dart';
 
-import 'InstagramUiDemo/instaMainPage.dart';
-import 'Tasks/sptask3.dart';
 
 
 void main() {
@@ -35,10 +35,10 @@ class MyApp extends StatelessWidget {
           //
           // This works for code too, not just values: Most code changes can be
           // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
         ),
-        home: MyspClass());
+        home:MyRegisterClass());
   }
 }
 

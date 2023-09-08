@@ -15,6 +15,9 @@ class _MyInstaHomeClassState extends State<MyInstaHomeClass> {
   List pro_pic = ["https://shorturl.at/anuQV","https://shorturl.at/dsBKL","https://shorturl.at/bcdf9"];
   List posts = ["https://shorturl.at/anuQV","https://shorturl.at/dsBKL","https://shorturl.at/bcdf9"];
 
+  bool isLiked = false;
+  bool isSaved = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +101,7 @@ class _MyInstaHomeClassState extends State<MyInstaHomeClass> {
          );
         }else{
           return Container(
-            height: 300,
+            height: 400,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -110,20 +113,38 @@ class _MyInstaHomeClassState extends State<MyInstaHomeClass> {
                   title: Text(user_name[index-1]),
                 ),
                 SizedBox(
-                  height: 200,
+                  height: 300,
                   width: MediaQuery.of(context).size.width,
-                  child: Image(image: NetworkImage(posts[index-1]),),
+                  child: InkWell(
+                     onDoubleTap: (){
+                       setState(() {
+                         isLiked = !isLiked;
+                       });
+                     },
+                      child: Image(image: NetworkImage(posts[index-1]),fit: BoxFit.fitWidth,)),
                 ),
                 SizedBox(height: 10,),
                 Row(
                   children: [
-                    Icon(Icons.favorite_border_outlined),
+                    SizedBox(width: 10,),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          isLiked = !isLiked;
+                        });
+                      }, child: isLiked == true ? Icon(Icons.favorite,color: Colors.red[800],) : Icon(Icons.favorite_border_outlined,)),
                     SizedBox(width: 10,),
                     Icon(Icons.chat_rounded),
                     SizedBox(width: 10,),
                     Icon(Icons.send),
-                    SizedBox(width: 220,),
-                    Icon(Icons.bookmark_outline)
+                    SizedBox(width: 210,),
+                    InkWell(
+                      onTap: (){
+                        setState(() {
+                          isSaved = !isSaved;
+                        });
+                      },
+                        child: isSaved == true ? Icon(Icons.bookmark): Icon(Icons.bookmark_outline))
                   ],
                 )
               ],

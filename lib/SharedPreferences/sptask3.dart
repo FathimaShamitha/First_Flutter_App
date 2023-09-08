@@ -41,6 +41,7 @@ class _MyspClassState extends State<MyspClass> {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(onPressed: (){
               setdata();
