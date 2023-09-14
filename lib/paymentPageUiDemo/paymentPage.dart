@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapplication/paymentPageUiDemo/paymentSucesspage.dart';
 
-import 'notFoundPage.dart';
+import 'timeoutpage.dart';
 
 class MyPaymentclass extends StatefulWidget {
   const MyPaymentclass({Key? key}) : super(key: key);

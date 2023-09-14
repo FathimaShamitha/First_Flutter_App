@@ -1,20 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:myapplication/MyApp/profileviewpagetask.dart';
+import 'package:myapplication/MyApp/profilepageSharedPref.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MyRegisterClass extends StatefulWidget {
-  const MyRegisterClass({Key? key}) : super(key: key);
+class MyloginClass extends StatefulWidget {
+  const MyloginClass({Key? key}) : super(key: key);
 
   @override
-  State<MyRegisterClass> createState() => _MyRegisterClassState();
+  State<MyloginClass> createState() => _MyloginClassState();
 }
 
-class _MyRegisterClassState extends State<MyRegisterClass> {
+class _MyloginClassState extends State<MyloginClass> {
   String gender = "";
-  GlobalKey<FormState> form_key = GlobalKey();
+  String my_name = "";
+  String my_email = "";
+  String my_phone = "";
+  String my_qualification = "";
+  String my_gender = "";
+  late SharedPreferences pref;
+
   TextEditingController tc_name = TextEditingController();
   TextEditingController tc_email = TextEditingController();
   TextEditingController tc_phone = TextEditingController();
   TextEditingController tc_qual = TextEditingController();
+  GlobalKey<FormState> form_key = GlobalKey();
+
+  Future<void> setData(name, email, phone, qualification, gender) async {
+    pref = await SharedPreferences.getInstance();
+
+    setState(() {
+      pref.setString("name", name);
+      pref.setString("email", email);
+      pref.setString("phone", phone);
+      pref.setString("qualification", qualification);
+      pref.setString("gender", gender);
+
+      my_name = name;
+      my_email = email;
+      my_phone = phone;
+      my_qualification = qualification;
+      my_gender = gender;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +56,11 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                 ),
                 Center(
                     child: Text(
-                  "Register",
+                  "Login",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 40,
-                      color: Colors.blue[800]),
+                      color: Colors.deepPurple[400]),
                 )),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 40, 30, 10),
@@ -43,7 +69,7 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Name",
-                          style: TextStyle(color: Colors.blue[800]),
+                          style: TextStyle(color: Colors.deepPurple[300]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -61,7 +87,7 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Email",
-                          style: TextStyle(color: Colors.blue[800]),
+                          style: TextStyle(color: Colors.deepPurple[300]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -79,7 +105,7 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Phone No",
-                          style: TextStyle(color: Colors.blue[800]),
+                          style: TextStyle(color: Colors.deepPurple[300]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -105,7 +131,7 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                           child: Text(
                             "Gender : ",
                             style: TextStyle(
-                                fontSize: 20, color: Colors.blue[800]),
+                                fontSize: 20, color: Colors.deepPurple[300]),
                           ),
                         ),
                         RadioMenuButton(
@@ -118,7 +144,7 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                             },
                             child: Text(
                               "Male",
-                              style: TextStyle(color: Colors.blue[800]),
+                              style: TextStyle(color: Colors.deepPurple[300]),
                             )),
                         RadioMenuButton(
                             value: "Female",
@@ -130,7 +156,7 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                             },
                             child: Text(
                               "Female",
-                              style: TextStyle(color: Colors.blue[800]),
+                              style: TextStyle(color: Colors.deepPurple[300]),
                             )),
                       ],
                     ),
@@ -143,7 +169,7 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Qualification",
-                          style: TextStyle(color: Colors.blue[800]),
+                          style: TextStyle(color: Colors.deepPurple[300]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -159,24 +185,24 @@ class _MyRegisterClassState extends State<MyRegisterClass> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (form_key.currentState!.validate()) {
+                        setData(tc_name.text, tc_email.text, tc_phone.text,
+                            tc_qual.text, gender);
+                        tc_name.clear();
+                        tc_email.clear();
+                        tc_phone.clear();
+                        tc_qual.clear();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyProfileViewClass(
-                                      name: tc_name.text,
-                                      email: tc_email.text,
-                                      phone: tc_phone.text,
-                                      qualification: tc_qual.text,
-                                      gender: gender,
-                                    )));
+                                builder: (context) => MyprofileSharedClass()));
                       }
                     },
                     child: Text(
-                      "Submit",
+                      "Login",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[800]),
+                        backgroundColor: Colors.deepPurple[300]),
                   ),
                 )
               ],

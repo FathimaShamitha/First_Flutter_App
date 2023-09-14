@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapplication/paymentPageUiDemo/paymentSucesspage.dart';
 
-import '../paymentPageUiDemo/notFoundPage.dart';
+import '../paymentPageUiDemo/timeoutpage.dart';
 
 class MyFutureDelayedClass extends StatefulWidget {
   const MyFutureDelayedClass({Key? key}) : super(key: key);

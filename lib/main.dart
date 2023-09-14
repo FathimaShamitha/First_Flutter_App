@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'MyApp/registerpagetask.dart';
-import 'WebviewTask/webmainpage.dart';
-
+import 'WhatsAppUiDemo/profileUi.dart';
 
 
 void main() {
@@ -38,7 +36,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
         ),
-        home:MyRegisterClass());
+        home:ProfileUiClass());
   }
 }
 

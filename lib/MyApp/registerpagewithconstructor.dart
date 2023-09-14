@@ -1,46 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:myapplication/MyApp/profilepage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:myapplication/MyApp/profileviewpagewithconstructor.dart';
 
-class MyloginClass extends StatefulWidget {
-  const MyloginClass({Key? key}) : super(key: key);
+class MyRegisterClass extends StatefulWidget {
+  const MyRegisterClass({Key? key}) : super(key: key);
 
   @override
-  State<MyloginClass> createState() => _MyloginClassState();
+  State<MyRegisterClass> createState() => _MyRegisterClassState();
 }
 
-class _MyloginClassState extends State<MyloginClass> {
+class _MyRegisterClassState extends State<MyRegisterClass> {
   String gender = "";
-  String my_name = "";
-  String my_email = "";
-  String my_phone = "";
-  String my_qualification = "";
-  String my_gender = "";
-  late SharedPreferences pref;
-
+  GlobalKey<FormState> form_key = GlobalKey();
   TextEditingController tc_name = TextEditingController();
   TextEditingController tc_email = TextEditingController();
   TextEditingController tc_phone = TextEditingController();
   TextEditingController tc_qual = TextEditingController();
-  GlobalKey<FormState> form_key = GlobalKey();
-
-  Future<void> setData(name, email, phone, qualification, gender) async {
-    pref = await SharedPreferences.getInstance();
-
-    setState(() {
-      pref.setString("name", name);
-      pref.setString("email", email);
-      pref.setString("phone", phone);
-      pref.setString("qualification", qualification);
-      pref.setString("gender", gender);
-
-      my_name = name;
-      my_email = email;
-      my_phone = phone;
-      my_qualification = qualification;
-      my_gender = gender;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +30,11 @@ class _MyloginClassState extends State<MyloginClass> {
                 ),
                 Center(
                     child: Text(
-                  "Login",
+                  "Register",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 40,
-                      color: Colors.deepPurple[400]),
+                      color: Colors.blue[800]),
                 )),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(30, 40, 30, 10),
@@ -69,7 +43,7 @@ class _MyloginClassState extends State<MyloginClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Name",
-                          style: TextStyle(color: Colors.deepPurple[300]),
+                          style: TextStyle(color: Colors.blue[800]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -87,7 +61,7 @@ class _MyloginClassState extends State<MyloginClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Email",
-                          style: TextStyle(color: Colors.deepPurple[300]),
+                          style: TextStyle(color: Colors.blue[800]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -105,7 +79,7 @@ class _MyloginClassState extends State<MyloginClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Phone No",
-                          style: TextStyle(color: Colors.deepPurple[300]),
+                          style: TextStyle(color: Colors.blue[800]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -131,7 +105,7 @@ class _MyloginClassState extends State<MyloginClass> {
                           child: Text(
                             "Gender : ",
                             style: TextStyle(
-                                fontSize: 20, color: Colors.deepPurple[300]),
+                                fontSize: 20, color: Colors.blue[800]),
                           ),
                         ),
                         RadioMenuButton(
@@ -144,7 +118,7 @@ class _MyloginClassState extends State<MyloginClass> {
                             },
                             child: Text(
                               "Male",
-                              style: TextStyle(color: Colors.deepPurple[300]),
+                              style: TextStyle(color: Colors.blue[800]),
                             )),
                         RadioMenuButton(
                             value: "Female",
@@ -156,7 +130,7 @@ class _MyloginClassState extends State<MyloginClass> {
                             },
                             child: Text(
                               "Female",
-                              style: TextStyle(color: Colors.deepPurple[300]),
+                              style: TextStyle(color: Colors.blue[800]),
                             )),
                       ],
                     ),
@@ -169,7 +143,7 @@ class _MyloginClassState extends State<MyloginClass> {
                     decoration: InputDecoration(
                         label: Text(
                           "Qualification",
-                          style: TextStyle(color: Colors.deepPurple[300]),
+                          style: TextStyle(color: Colors.blue[800]),
                         ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
@@ -185,24 +159,24 @@ class _MyloginClassState extends State<MyloginClass> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (form_key.currentState!.validate()) {
-                        setData(tc_name.text, tc_email.text, tc_phone.text,
-                            tc_qual.text, gender);
-                        tc_name.clear();
-                        tc_email.clear();
-                        tc_phone.clear();
-                        tc_qual.clear();
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MyprofileSharedClass()));
+                                builder: (context) => MyProfileViewClass(
+                                      name: tc_name.text,
+                                      email: tc_email.text,
+                                      phone: tc_phone.text,
+                                      qualification: tc_qual.text,
+                                      gender: gender,
+                                    )));
                       }
                     },
                     child: Text(
-                      "Login",
+                      "Submit",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple[300]),
+                        backgroundColor: Colors.blue[800]),
                   ),
                 )
               ],

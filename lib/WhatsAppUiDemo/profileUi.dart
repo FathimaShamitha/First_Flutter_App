@@ -21,6 +21,7 @@ class _ProfileUiClassState extends State<ProfileUiClass> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +54,19 @@ class _ProfileUiClassState extends State<ProfileUiClass> {
                             color: Colors.white,
                           ),
                         )
-                      : CircleAvatar(
-                          radius: 100,
-                          backgroundColor: Colors.grey[600],
-                          backgroundImage: FileImage(profile_pic!),
-                        ),
+                      : InkWell(
+                    onTap: (){
+                     Navigator.push(context, MaterialPageRoute(builder: (_)=>MyProfileViewClass(pic: profile_pic))) ;
+                    },
+                    child: Hero(
+                      tag: "profilepictag",
+                      child: CircleAvatar(
+                        radius: 100,
+                        backgroundColor: Colors.grey[600],
+                        backgroundImage: FileImage(profile_pic!),
+                      ),
+                    ),
+                  ),
                   Positioned(
                     top: 140,
                     left: 140,
@@ -115,3 +124,36 @@ class _ProfileUiClassState extends State<ProfileUiClass> {
     );
   }
 }
+
+class MyProfileViewClass extends StatelessWidget {
+
+  final File? pic;
+  const MyProfileViewClass({Key? key, required this.pic}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("Profile photo",style: TextStyle(fontSize: 20,color: Colors.white),),
+        actions: [
+          Row(
+            children: [
+              Icon(Icons.edit,color: Colors.white,),
+              SizedBox(width: 20,),
+              Icon(Icons.share,color: Colors.white,),
+              SizedBox(width: 20,)
+            ],
+          )
+        ],
+      ),
+      body: Container(
+        height: 700,
+        width: MediaQuery.of(context).size.width,
+        child: Image(image: FileImage(pic!),),
+      ),
+      backgroundColor: Colors.black,
+    );
+  }
+}
+
