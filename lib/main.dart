@@ -1,15 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'Api/apitask2.dart';
 import 'Api/apitask3.dart';
 import 'Api/apitask4.dart';
+import 'Api/apitask5.dart';
+import 'Api/apitask55.dart';
+import 'Api/apitask6.dart';
+import 'Api/apitask7.dart';
 import 'WidgetTasks/snackbartask.dart';
 
 
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -42,7 +49,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
         ),
-        home:MyApi4Calss());
+        home:MyApi7Class());
   }
 }
 
