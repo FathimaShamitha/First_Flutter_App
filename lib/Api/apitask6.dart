@@ -8,40 +8,49 @@ class MyApi6Class extends StatefulWidget {
   State<MyApi6Class> createState() => _MyApi6ClassState();
 }
 
-class _MyApi6ClassState extends State<MyApi6Class>{
-
+class _MyApi6ClassState extends State<MyApi6Class> {
   List posts = [];
 
-  Future<void> getPosts()async{
-    var res = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
-    if(res.statusCode==200){
+  Future<void> getPosts() async {
+    var res =
+        await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+    if (res.statusCode == 200) {
       var data = jsonDecode(res.body);
       posts = data;
-    }else{
+    } else {
       throw Exception("Api Error");
     }
-}
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: SafeArea(
-       child: FutureBuilder(builder: (BuildContext context,  snapshot) {
-         return ListView.builder(itemCount: posts.length,itemBuilder: (context,index){
-           return Card(
-             child: Column(
-               children: [
-                 Text("${posts[index]["title"]}",style: TextStyle(fontWeight: FontWeight.bold),),
-                 Padding(
-                   padding: const EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
-                   child: Text("${posts[index]["body"]}"),
-                 ),
-               ],
-             ),
-           );
-         });
-       },future: getPosts(),),
-     ),
+      body: SafeArea(
+        child: FutureBuilder(
+          builder: (BuildContext context, snapshot) {
+            return ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: Column(
+                      children: [
+                        Text(
+                          "${posts[index]["title"]}",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          child: Text("${posts[index]["body"]}"),
+                        ),
+                      ],
+                    ),
+                  );
+                });
+          },
+          future: getPosts(),
+        ),
+      ),
     );
   }
 }
